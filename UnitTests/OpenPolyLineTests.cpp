@@ -41,24 +41,24 @@ namespace UnitTests
 			Assert::AreEqual(NOMBRE_DE_LIGNE_DESSINEES, fakeWindowAPI->drawLine_getnumberOfCall());
 		}
 
-		//TEST_METHOD(openPloyLine_with_less_than_2_points_should_throw_exception)
-		//{
-		//	//Arrange
-		//	openPolyLine->add(Point(200, 200));
+		TEST_METHOD(openPloyLine_with_less_than_2_points_should_throw_exception)
+		{
+			//Arrange
+			openPolyLine->add(Point(200, 200));
 
-		//	//Action
-		//	bool exceptionThrown = false;
-		//	try
-		//	{
-		//		openPolyLine->draw();
-		//	}
-		//	catch (std::runtime_error ex)
-		//	{
-		//		exceptionThrown = true;
-		//	}
+			//Action
+			bool exceptionThrown = false;
+			try
+			{
+				openPolyLine->draw();
+			}
+			catch (std::runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
 
-		//	//Assert
-		//	Assert::IsTrue(exceptionThrown);
-		//}
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 	};
 }

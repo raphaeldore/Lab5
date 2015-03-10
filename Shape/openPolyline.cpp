@@ -14,6 +14,8 @@ void OpenPolyline::add(Point _point)
 
 void OpenPolyline::draw(const Color& _color)
 {
+	if (points.size() < 2) throw runtime_error("Pas assez de poits pour dessiner une ligne!");
+
 	windowApi->setDrawingColor(_color);
 
 	for (auto it = points.begin(); it < points.end(); ++it)
