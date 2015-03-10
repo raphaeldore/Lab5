@@ -11,8 +11,8 @@ namespace ShapeLibrary
 		double x;
 		double y;
 
-		bool Point::operator == (const Point & point) const;
-		bool Point::operator != (const Point & point) const;
+		bool Point::operator == (const Point & _point) const;
+		bool Point::operator != (const Point & _point) const;
 	};
 
 }
