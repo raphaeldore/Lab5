@@ -19,6 +19,5 @@ bool Point::operator == (const Point & _point) const
 
 bool Point::operator != (const Point & _point) const
 {
-	throw logic_error("Not Implmented yet");
-	return false; 
+	return !(*this == _point);
 }
