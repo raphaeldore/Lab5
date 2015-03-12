@@ -8,34 +8,34 @@ namespace UnitTests
 	TEST_CLASS(RectangleTests)
 	{
 	public:
-		//FakeWindowAPI * fakeWindowAPI;
-		//Rectangle * rectangle;
+		FakeWindowAPI * fakeWindowAPI;
+		Rectangle * rectangle;
 
-		//TEST_METHOD_INITIALIZE(RectangleTests_Initialize)
-		//{
-		//	fakeWindowAPI = new FakeWindowAPI(640, 480, "Super beau dessin");
-		//	rectangle = new Rectangle(*fakeWindowAPI);
-		//}
-		//TEST_METHOD_CLEANUP(RectangleTests_CleanUp)
-		//{
-		//	delete fakeWindowAPI;
-		//	delete rectangle;
-		//}
+		TEST_METHOD_INITIALIZE(RectangleTests_Initialize)
+		{
+			fakeWindowAPI = new FakeWindowAPI(640, 480, "Super beau dessin");
+			rectangle = new Rectangle(*fakeWindowAPI);
+		}
+		TEST_METHOD_CLEANUP(RectangleTests_CleanUp)
+		{
+			delete fakeWindowAPI;
+			delete rectangle;
+		}
 
-		//TEST_METHOD(draw_rectangle_should_draw_a_rectangle_on_windowAPI)
-		//{
-		//	//Arrange
-		//	rectangle->setPosition(Point(250, 500));
-		//	rectangle->setHeight(10);
-		//	rectangle->setWidth(80);
+		TEST_METHOD(draw_rectangle_should_draw_a_rectangle_on_windowAPI)
+		{
+			//Arrange
+			rectangle->setPosition(Point(250, 500));
+			rectangle->setHeight(10);
+			rectangle->setWidth(80);
 
-		//	//Action
-		//	rectangle->draw();
+			//Action
+			rectangle->draw();
 
-		//	//Assert
-		//	Assert::IsTrue(fakeWindowAPI->setDrawingColor_hasBeenCalled());
-		//	Assert::IsTrue(fakeWindowAPI->drawRectangle_hasBeenCalled());
-		//}
+			//Assert
+			Assert::IsTrue(fakeWindowAPI->setDrawingColor_hasBeenCalled());
+			Assert::IsTrue(fakeWindowAPI->drawRectangle_hasBeenCalled());
+		}
 
 		//TEST_METHOD(draw_rectangle_with_fill_color_should_fill_the_rectangle)
 		//{
