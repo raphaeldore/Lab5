@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Rectangle::Rectangle(IWindowAPI& _windowApi) : windowApi(&_windowApi), position(0, 0), fillColor(Color::INVISIBLE)
+Rectangle::Rectangle(IWindowAPI& _windowApi) : windowApi(&_windowApi), position(0, 0)
 {
 }
 
@@ -25,9 +25,14 @@ void Rectangle::setWidth(const int& _width)
 	width = _width;
 }
 
-void Rectangle::setFillColor(const Color& _fillcolor)
+void Rectangle::setFillColor(const Color& _fillColor)
 {
-	fillColor = _fillcolor;
+	Shape::setFillColor(_fillColor);
+}
+
+void Rectangle::setLineColor(const Color& _lineColor)
+{
+	Shape::setLineColor(_lineColor);
 }
 
 void Rectangle::draw(const Color& _color)
