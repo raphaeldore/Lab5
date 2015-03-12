@@ -17,11 +17,13 @@ void Rectangle::setPosition(const Point& _position)
 
 void Rectangle::setHeight(const int& _height)
 {
+	if (_height < 0) throw invalid_argument("Hauteur négative non permise.");
 	height = _height;
 }
 
 void Rectangle::setWidth(const int& _width)
 {
+	if (_width < 0) throw invalid_argument("Largeur négative non permise.");
 	width = _width;
 }
 

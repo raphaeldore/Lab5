@@ -12,6 +12,13 @@ namespace ShapeLibrary
 	{
 	public:
 
+	protected:
+		void setFillColor(const Color& _fillColor);
+		void setLineColor(const Color& _fillColor);
 
+		vector<Point> points;
+
+		Color fillColor = Color::INVISIBLE;
+		Color lineColor;
 	};
 }
