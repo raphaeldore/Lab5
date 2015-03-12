@@ -4,10 +4,10 @@ using namespace ShapeLibrary;
 
 OpenPolyline::~OpenPolyline()
 {
-	//delete windowApi;
+
 }
 
-void OpenPolyline::add(Point _point)
+void OpenPolyline::add(const Point& _point)
 {
 	points.push_back(_point);
 }

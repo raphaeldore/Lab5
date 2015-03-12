@@ -10,7 +10,7 @@ namespace ShapeLibrary
 		OpenPolyline(IWindowAPI& _windowApi) : windowApi(&_windowApi) {};
 		~OpenPolyline();
 
-		void add(Point _point);
+		void add(const Point& _point);
 		void draw(const Color& _color = Color::BLACK);
 
 	private:
