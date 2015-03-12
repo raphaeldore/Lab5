@@ -37,18 +37,18 @@ namespace UnitTests
 			Assert::IsTrue(fakeWindowAPI->drawRectangle_hasBeenCalled());
 		}
 
-		//TEST_METHOD(draw_rectangle_with_fill_color_should_fill_the_rectangle)
-		//{
-		//	//Arrange
-		//	rectangle->setPosition(Point(250, 500));
-		//	rectangle->setFillColor(Color::FUCHSIA);
+		TEST_METHOD(draw_rectangle_with_fill_color_should_fill_the_rectangle)
+		{
+			//Arrange
+			rectangle->setPosition(Point(250, 500));
+			rectangle->setFillColor(Color::FUCHSIA);
 
-		//	//Action
-		//	rectangle->draw();
+			//Action
+			rectangle->draw();
 
-		//	//Assert
-		//	Assert::IsTrue(fakeWindowAPI->fillRectangle_hasBeenCalled());
-		//}
+			//Assert
+			Assert::IsTrue(fakeWindowAPI->fillRectangle_hasBeenCalled());
+		}
 
 		//TEST_METHOD(draw_rectangle_with_fill_and_line_color_should_draw_fill_rectangle_with_colored_line)
 		//{
