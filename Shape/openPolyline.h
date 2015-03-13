@@ -4,17 +4,16 @@
 
 namespace ShapeLibrary
 {
-	class OpenPolyline
+	class OpenPolyline : public Shape
 	{
 	public:
-		OpenPolyline(IWindowAPI& _windowApi) : windowApi(&_windowApi) {};
+		OpenPolyline(IWindowAPI& _windowApi);
 		~OpenPolyline();
 
 		void add(const Point& _point);
 		void draw(const Color& _color = Color::WHITE);
 
 	private:
-		IWindowAPI * windowApi;
 		vector<Point> points;
 	};
 }

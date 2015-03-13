@@ -7,6 +7,7 @@ namespace ShapeLibrary
 	{
 	public:
 
-
+	protected:
+		vector<Point> points;
 	};
 }

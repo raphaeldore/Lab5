@@ -9,13 +9,12 @@ namespace ShapeLibrary
 		Rectangle(IWindowAPI& _windowApi);
 		~Rectangle();
 
-		void setPosition(const Point& _position);
+		void setPosition(const Point& _position); //TODO erreur si le point passé n'est pas un pointeur? Out of scope delete?
 		void setHeight(const int& _height);
 		void setWidth(const int& _width);
 
 		void draw(const Color& _color = Color::WHITE) const;
 	private:
-		IWindowAPI * windowApi;
 		unique_ptr<Point> position = nullptr;
 		int height;
 		int width;

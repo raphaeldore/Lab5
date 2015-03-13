@@ -2,6 +2,10 @@
 
 using namespace ShapeLibrary;
 
+OpenPolyline::OpenPolyline(IWindowAPI& _windowApi) : Shape(_windowApi)
+{
+}
+
 OpenPolyline::~OpenPolyline()
 {
 

@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Circle::Circle(IWindowAPI& _windowApi) : windowApi(&_windowApi)
+Circle::Circle(IWindowAPI& _windowApi) : Shape(_windowApi)
 {
 }
 

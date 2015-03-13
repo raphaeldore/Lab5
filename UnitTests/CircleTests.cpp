@@ -51,20 +51,20 @@ namespace UnitTests
 			Assert::IsTrue(fakeWindowAPI->fillCircle_hasBeenCalled());
 		}
 
-		//TEST_METHOD(draw_circle_with_fill_and_line_color_should_draw_fill_circle_with_colored_line)
-		//{
-		//	//Arrange
-		//	circle->setCenter(Point(300, 300));
-		//	circle->setFillColor(Color::LIME);
-		//	circle->setLineColor(Color::BROWN);
+		TEST_METHOD(draw_circle_with_fill_and_line_color_should_draw_fill_circle_with_colored_line)
+		{
+			//Arrange
+			circle->setCenter(Point(300, 300));
+			circle->setFillColor(Color::LIME);
+			circle->setLineColor(Color::BROWN);
 
-		//	//Action
-		//	circle->draw();
+			//Action
+			circle->draw();
 
-		//	//Assert
-		//	Assert::IsTrue(fakeWindowAPI->fillCircle_hasBeenCalled());
-		//	Assert::IsTrue(fakeWindowAPI->drawCircle_hasBeenCalled());
-		//}
+			//Assert
+			Assert::IsTrue(fakeWindowAPI->fillCircle_hasBeenCalled());
+			Assert::IsTrue(fakeWindowAPI->drawCircle_hasBeenCalled());
+		}
 
 
 		//TEST_METHOD(set_negative_radius_should_throw_excpetion)

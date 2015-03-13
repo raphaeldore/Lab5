@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Rectangle::Rectangle(IWindowAPI& _windowApi) : windowApi(&_windowApi)
+Rectangle::Rectangle(IWindowAPI& _windowApi) : Shape(_windowApi)
 {
 }
 
