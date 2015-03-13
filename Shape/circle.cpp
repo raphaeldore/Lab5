@@ -24,4 +24,9 @@ void Circle::draw(const Color& _color) const
 {
 	windowApi->setDrawingColor(_color);
 	windowApi->drawCircle(*center, radius);
+
+	if (fillColor.isVisible())
+	{
+		windowApi->fillCircle(*center, radius);
+	}
 }

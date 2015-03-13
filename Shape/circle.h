@@ -3,7 +3,7 @@
 
 namespace ShapeLibrary
 {
-	class Circle : Shape
+	class Circle : public Shape
 	{
 	public:
 		Circle(IWindowAPI &_windowApi);
@@ -11,6 +11,7 @@ namespace ShapeLibrary
 
 		void setCenter(const Point& _center);
 		void setRadius(const int& _radius);
+
 		void draw(const Color& _color = Color::WHITE) const;
 	private:
 		IWindowAPI * windowApi;
