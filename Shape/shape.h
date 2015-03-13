@@ -15,6 +15,7 @@ namespace ShapeLibrary
 	protected:
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _fillColor);
+		void draw();
 
 		vector<Point> points;
 
