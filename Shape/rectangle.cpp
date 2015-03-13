@@ -27,16 +27,6 @@ void Rectangle::setWidth(const int& _width)
 	width = _width;
 }
 
-void Rectangle::setFillColor(const Color& _fillColor)
-{
-	Shape::setFillColor(_fillColor);
-}
-
-void Rectangle::setLineColor(const Color& _lineColor)
-{
-	Shape::setLineColor(_lineColor);
-}
-
 void Rectangle::draw(const Color& _color) const
 {
 	if (position == nullptr) throw runtime_error("Aucune position n'a été configurée!");

@@ -11,12 +11,10 @@ namespace ShapeLibrary
 	class Shape
 	{
 	public:
-
-	protected:
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _fillColor);
 		void draw();
-
+	protected:
 		vector<Point> points;
 
 		Color fillColor = Color::INVISIBLE;

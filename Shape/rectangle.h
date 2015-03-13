@@ -3,7 +3,7 @@
 
 namespace ShapeLibrary
 {
-	class Rectangle : Shape
+	class Rectangle : public Shape
 	{
 	public:
 		Rectangle(IWindowAPI& _windowApi);
@@ -12,8 +12,6 @@ namespace ShapeLibrary
 		void setPosition(const Point& _position);
 		void setHeight(const int& _height);
 		void setWidth(const int& _width);
-		void setFillColor(const Color& _fillColor);
-		void setLineColor(const Color& _lineColor);
 
 		void draw(const Color& _color = Color::WHITE) const;
 	private:
