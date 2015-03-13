@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Rectangle::Rectangle(IWindowAPI& _windowApi) : windowApi(&_windowApi), position(0, 0)
+Rectangle::Rectangle(IWindowAPI& _windowApi) : windowApi(&_windowApi)
 {
 }
 
@@ -12,7 +12,7 @@ Rectangle::~Rectangle()
 
 void Rectangle::setPosition(const Point& _position)
 {
-	position = _position;
+	position = make_unique<Point>(_position);
 }
 
 void Rectangle::setHeight(const int& _height)
@@ -37,13 +37,14 @@ void Rectangle::setLineColor(const Color& _lineColor)
 	Shape::setLineColor(_lineColor);
 }
 
-void Rectangle::draw(const Color& _color)
+void Rectangle::draw(const Color& _color) const
 {
+	if (position == nullptr) throw runtime_error("Aucune position n'a été configurée!");
 	windowApi->setDrawingColor(_color);
-	windowApi->drawRectangle(position, width, height);
+	windowApi->drawRectangle(*position, width, height);
 
 	if (fillColor.isVisible())
 	{
-		windowApi->fillRectangle(position, width, height);
+		windowApi->fillRectangle(*position, width, height);
 	}
 }

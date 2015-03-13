@@ -106,24 +106,24 @@ namespace UnitTests
 			Assert::IsTrue(exceptionThrown);
 		}
 
-		//TEST_METHOD(no_position_set_should_throw_exception)
-		//{
-		//	//Arrange
-		//	rectangle->setHeight(10);
+		TEST_METHOD(no_position_set_should_throw_exception)
+		{
+			//Arrange
+			rectangle->setHeight(10);
 
-		//	//Action
-		//	bool exceptionThrown = false;
-		//	try
-		//	{
-		//		rectangle->draw();
-		//	}
-		//	catch (std::runtime_error ex)
-		//	{
-		//		exceptionThrown = true;
-		//	}
+			//Action
+			bool exceptionThrown = false;
+			try
+			{
+				rectangle->draw();
+			}
+			catch (std::runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
 
-		//	//Assert
-		//	Assert::IsTrue(exceptionThrown);
-		//}
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 	};
 }

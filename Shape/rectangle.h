@@ -15,10 +15,10 @@ namespace ShapeLibrary
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _lineColor);
 
-		void draw(const Color& _color = Color::WHITE);
+		void draw(const Color& _color = Color::WHITE) const;
 	private:
 		IWindowAPI * windowApi;
-		Point position;
+		unique_ptr<Point> position = nullptr;
 		int height;
 		int width;
 	};
