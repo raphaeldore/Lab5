@@ -88,23 +88,23 @@ namespace UnitTests
 			Assert::IsTrue(exceptionThrown);
 		}
 
-		//TEST_METHOD(draw_circle_with_no_center_should_throw_exception)
-		//{
-		//	//Arrange
+		TEST_METHOD(draw_circle_with_no_center_should_throw_exception)
+		{
+			//Arrange
 
-		//	//Action
-		//	bool exceptionThrown = false;
-		//	try
-		//	{
-		//		circle->draw();
-		//	}
-		//	catch (std::runtime_error ex)
-		//	{
-		//		exceptionThrown = true;
-		//	}
+			//Action
+			bool exceptionThrown = false;
+			try
+			{
+				circle->draw();
+			}
+			catch (std::runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
 
-		//	//Assert
-		//	Assert::IsTrue(exceptionThrown);
-		//}
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 	};
 }

@@ -23,6 +23,7 @@ void Circle::setRadius(const int& _radius)
 
 void Circle::draw(const Color& _color) const
 {
+	if (center == nullptr) throw runtime_error("Aucun centre n'a été configuré");
 	windowApi->setDrawingColor(_color);
 	windowApi->drawCircle(*center, radius);
 
