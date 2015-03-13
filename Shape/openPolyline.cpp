@@ -18,12 +18,8 @@ void OpenPolyline::draw(const Color& _color)
 
 	windowApi->setDrawingColor(_color);
 
-	for (auto it = points.begin(); it < points.end(); ++it)
+	for (auto it = points.begin(); next(it) < points.end(); ++it)
 	{
-		if (next(it) != points.end())
-		{
-			windowApi->drawLine(*it, *next(it));
-		}
-		
+		windowApi->drawLine(*it, *next(it));	
 	}
 }
