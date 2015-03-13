@@ -17,6 +17,7 @@ void Circle::setCenter(const Point& _center)
 
 void Circle::setRadius(const int& _radius)
 {
+	if (_radius < 0) throw invalid_argument("Radius négatif non permis");
 	radius = _radius;
 }
 

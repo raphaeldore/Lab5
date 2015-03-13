@@ -67,26 +67,26 @@ namespace UnitTests
 		}
 
 
-		//TEST_METHOD(set_negative_radius_should_throw_excpetion)
-		//{
-		//	//Arrange
-		//	const int INVALID_RADIUS = -1;
+		TEST_METHOD(set_negative_radius_should_throw_excpetion)
+		{
+			//Arrange
+			const int INVALID_RADIUS = -1;
 
-		//	//Action
-		//	bool exceptionThrown = false;
-		//	try
-		//	{
-		//		Circle circle(*fakeWindowAPI);
-		//		circle.setRadius(INVALID_RADIUS);
-		//	}
-		//	catch (std::invalid_argument ex)
-		//	{
-		//		exceptionThrown = true;
-		//	}
+			//Action
+			bool exceptionThrown = false;
+			try
+			{
+				Circle circle(*fakeWindowAPI);
+				circle.setRadius(INVALID_RADIUS);
+			}
+			catch (std::invalid_argument ex)
+			{
+				exceptionThrown = true;
+			}
 
-		//	//Assert
-		//	Assert::IsTrue(exceptionThrown);
-		//}
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 
 		//TEST_METHOD(draw_circle_with_no_center_should_throw_exception)
 		//{
