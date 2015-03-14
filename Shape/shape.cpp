@@ -15,3 +15,8 @@ void Shape::setLineColor(const Color& _lineColor)
 {
 	lineColor = _lineColor;
 }
+
+void Shape::add(Point& _point)
+{
+	points.push_back(_point);
+}

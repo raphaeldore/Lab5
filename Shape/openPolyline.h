@@ -10,10 +10,6 @@ namespace ShapeLibrary
 		OpenPolyline(IWindowAPI& _windowApi);
 		~OpenPolyline();
 
-		void add(const Point& _point);
-		void draw(const Color& _color = Color::WHITE);
-
-	private:
-		vector<Point> points;
+		void draw(const Color& _color = Color::WHITE);		
 	};
 }
