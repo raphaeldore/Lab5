@@ -12,10 +12,12 @@ namespace ShapeLibrary
 	{
 	public:
 		Shape(IWindowAPI& _windowApi);
+		virtual ~Shape() {}
+
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _fillColor);
 		void add(Point& _point);
-		void draw();
+		virtual void draw() {};
 	protected:
 		IWindowAPI * windowApi;
 		vector<Point> points;

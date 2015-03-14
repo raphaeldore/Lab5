@@ -8,7 +8,6 @@ namespace UnitTests
 	TEST_CLASS(OpenPolylineTests)
 	{
 	public:
-		
 		FakeWindowAPI * fakeWindowAPI;
 		OpenPolyline * openPolyLine;
 
