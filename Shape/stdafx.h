@@ -10,6 +10,8 @@
 
 // TODO: faites référence ici aux en-têtes supplémentaires nécessaires au programme
 
+#include <memory>
+
 #include "color.h"
 #include "point.h"
 

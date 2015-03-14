@@ -10,9 +10,9 @@ Circle::~Circle()
 {
 }
 
-void Circle::setCenter(const Point& _center)
+void Circle::setCenter(Point& _center)
 {
-	center = make_unique<Point>(_center);
+	add(_center);
 }
 
 void Circle::setRadius(const int& _radius)
@@ -23,12 +23,12 @@ void Circle::setRadius(const int& _radius)
 
 void Circle::draw(const Color& _color) const
 {
-	if (center == nullptr) throw runtime_error("Aucun centre n'a été configuré");
+	if (points.size() == 0) throw runtime_error("Aucun centre n'a été configuré");
 	windowApi->setDrawingColor(_color);
-	windowApi->drawCircle(*center, radius);
+	windowApi->drawCircle(points.back(), radius);
 
 	if (fillColor.isVisible())
 	{
-		windowApi->fillCircle(*center, radius);
+		windowApi->fillCircle(points.back(), radius);
 	}
 }

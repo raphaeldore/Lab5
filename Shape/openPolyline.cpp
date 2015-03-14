@@ -11,7 +11,7 @@ OpenPolyline::~OpenPolyline()
 
 }
 
-void OpenPolyline::draw(const Color& _color)
+void OpenPolyline::draw(const Color& _color) const
 {
 	if (points.size() < 2) throw runtime_error("Pas assez de points pour dessiner une ligne!");
 

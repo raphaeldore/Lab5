@@ -10,6 +10,6 @@ namespace ShapeLibrary
 		OpenPolyline(IWindowAPI& _windowApi);
 		~OpenPolyline();
 
-		void draw(const Color& _color = Color::WHITE);		
+		void draw(const Color& _color = Color::WHITE) const;		
 	};
 }
