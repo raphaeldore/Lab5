@@ -13,6 +13,8 @@ ClosedPolyline::~ClosedPolyline()
 
 void ClosedPolyline::draw(const Color& _color) const
 {
+	if (points.size() < 3) throw runtime_error("Nombre de points insufisants. Minimum 3 points.");
+	
 	OpenPolyline::draw(_color);
 
 	// Il ne reste qu'à fermer le polygone
