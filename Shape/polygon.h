@@ -11,7 +11,7 @@ namespace ShapeLibrary
 
 		void add(Point& _point) override;
 	private:
-		bool isOnPreviousLine(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const;
+		bool isOnPreviousLine(const Point& _point) const;
 		bool isColineaire(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const;
 		bool isBetween(const double& _a, const double& _b, const double& _c) const;
 	};

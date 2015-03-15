@@ -13,22 +13,24 @@ Polygon::~Polygon()
 
 void Polygon::add(Point& _point)
 {
-	if (points.size() >= 2 && isOnPreviousLine(points.at(points.size() - 2), _point, points.back()))
+	if (points.size() >= 2 && isOnPreviousLine(_point))
 			throw runtime_error("Deux points sur la même ligne!");
 
-	ClosedPolyline::add(_point);
-	
+	ClosedPolyline::add(_point);	
 }
 
-bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const
+bool Polygon::isOnPreviousLine(const Point& _point) const
 {
+	Point prevPoint = points.at(points.size() - 2);
+	Point nextPoint = points.back();
+
 	/****************************************************************************
 	Prenons la droite suivante:
 
 	      /C    où:
-	     /      A = _previousPoint
-	   B/       B = _currentPoint
-	   /        C = _nextPoint
+	     /      A = prevPoint
+	   B/       B = _point
+	   /        C = nextPoint
 	A /
 
 	1) Regardons si le point B se situe sur la droite qui passe par AC
@@ -46,7 +48,7 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	(Donc AC et BC sont parallèles).
 	***************************************************************************/
 
-	bool pointEstSurDroite = isColineaire(_previousPoint, _currentPoint, _nextPoint);
+	bool pointEstSurDroite = isColineaire(prevPoint, _point, nextPoint);
 
 	/**************************************************************************** 
 	2) Vérifions ensuite si le point se situe sur le même segment.
@@ -60,8 +62,8 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	bool pointEstSurSegment = false;
 	if (pointEstSurDroite)
 	{
-		pointEstSurSegment = isBetween(_previousPoint.x, _currentPoint.x, _nextPoint.x) &&
-			isBetween(_previousPoint.y, _currentPoint.y, _nextPoint.y);
+		pointEstSurSegment = isBetween(prevPoint.x, _point.x, nextPoint.x) &&
+			isBetween(prevPoint.y, _point.y, nextPoint.y);
 	}
 
 	// Si les 2 conditions sont respectées, le point est sur le même segment.
