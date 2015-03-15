@@ -31,8 +31,7 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	   /        C = _nextPoint
 	A /
 
-	1) Regardons si la droite qui passe par AC est parallèle à la
-	   droite qui passe par BC.
+	1) Regardons si le point B se situe sur la droite qui passe par AC
 	
 	D'abords, on regarde si la pente de A à C est la même que celle de B à C :
 	    (C.x - A.x)   (C.x - B.x)
@@ -43,11 +42,11 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	on regarde si le produit des extrêmes est égale au produit des moyens:
 	    (C.x - A.x) * (C.y - B.y) = (C.x - B.x) * (C.y - A.y)
 
-	Si c'est égale, la droite qui passe par AC est parallèle à la
-	droite qui passe par BC.
+	Si c'est égale, les points A ,B et C sont tous sur la même droite
+	(Donc AC et BC sont parallèles).
 	***************************************************************************/
 
-	bool droiteEstParallele = (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y) == (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
+	bool pointEstSurDroite = isColineaire(_previousPoint, _currentPoint, _nextPoint);
 
 	/**************************************************************************** 
 	2) Vérifions ensuite si le point se situe sur le même segment.
@@ -59,18 +58,25 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	****************************************************************************/
 
 	bool pointEstSurSegment = false;
-	if (droiteEstParallele)
+	if (pointEstSurDroite)
 	{
 		pointEstSurSegment = isBetween(_previousPoint.x, _currentPoint.x, _nextPoint.x) &&
 			isBetween(_previousPoint.y, _currentPoint.y, _nextPoint.y);
 	}
 
 	// Si les 2 conditions sont respectées, le point est sur le même segment.
-	return droiteEstParallele && pointEstSurSegment;
+	return pointEstSurDroite && pointEstSurSegment;
+}
+
+bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const
+{
+	// Retourne vrai si les trois points sont sur la même droite
+	return (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y) == (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
 }
 
 bool Polygon::isBetween(const double& _a, const double& _b, const double& _c) const
 {
-	//On vérifie de deux manières, afin de gérer les nombres négatifs. 
+	// On vérifie de deux manières, afin de gérer les nombres négatifs.
+	// Retourne vrai si _b se situe entre _a et _c
 	return _a <= _b && _b <= _c || _c <= _b && _b <= _a;
 }
