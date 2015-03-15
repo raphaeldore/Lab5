@@ -36,8 +36,8 @@ bool Polygon::isOnPreviousLine(const Point& _previousPoint, const Point& _curren
 	
 	D'abords, on regarde si la pente de A à C est la même que celle de B à C :
 	    (C.x - A.x)   (C.x - B.x)
-		----------- = -----------
-		(C.y - A.y)   (C.y - B.y)
+	    ----------- = -----------
+	    (C.y - A.y)   (C.y - B.y)
 
 	Afin d'éviter les nombres décimaux (on ne veut pas de perte de précision), 
 	on regarde si le produit des extrêmes est égale au produit des moyens:
