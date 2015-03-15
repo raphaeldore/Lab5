@@ -9,6 +9,7 @@ namespace ShapeLibrary
 		ClosedPolyline(IWindowAPI& _windowApi);
 		~ClosedPolyline();
 
+		//virtual void add(Point& _point) {};
 		void draw(const Color& _color = Color::WHITE) const;
 	};
 }

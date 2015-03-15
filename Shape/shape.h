@@ -16,7 +16,7 @@ namespace ShapeLibrary
 
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _fillColor);
-		void add(Point& _point);
+		virtual void add(Point& _point);
 		virtual void draw() {};
 	protected:
 		IWindowAPI * windowApi;

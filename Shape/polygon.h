@@ -3,11 +3,15 @@
 
 namespace ShapeLibrary
 {
-	class Polygon
+	class Polygon : public ClosedPolyline
 	{
 	public:
+		Polygon(IWindowAPI& _windowApi);
+		~Polygon();
 
-	protected:
-		vector<Point> points;
+		void add(Point& _point) override;
+	private:
+		bool isOnPreviousLine(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const;
+		bool isBetween(const double& _a, const double& _b, const double& _c) const;
 	};
 }
