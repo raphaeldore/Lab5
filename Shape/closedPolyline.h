@@ -7,9 +7,8 @@ namespace ShapeLibrary
 	{
 	public:
 		ClosedPolyline(IWindowAPI& _windowApi);
-		~ClosedPolyline();
+		virtual ~ClosedPolyline();
 
-		//virtual void add(Point& _point) {};
-		void draw(const Color& _color = Color::WHITE) const;
+		virtual void draw(const Color& _color = Color::WHITE) const override;
 	};
 }

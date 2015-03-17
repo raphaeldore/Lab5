@@ -22,16 +22,16 @@ void WindowsRender::render() const
 
 		for (auto& shape : shapes)
 		{
-			shape->draw();
+			shape.get()->draw();
 		}
-		
+
 		windowApi->displayScreen();
 		windowApi->wait(waitTime);
 
 	} while (windowApi->hasEvent() && windowApi->getEvent().getEventType() != QUIT);
 }
 
-void WindowsRender::attach(Shape& _shape)
+void WindowsRender::attach(Shape & _shape)
 {
-	shapes.push_back(make_unique<Shape>(_shape));
+	shapes.push_back(unique_ptr<Shape>(&_shape));
 }

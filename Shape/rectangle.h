@@ -3,7 +3,7 @@
 
 namespace ShapeLibrary
 {
-	class Rectangle : public Shape
+	class Rectangle : virtual public Shape
 	{
 	public:
 		Rectangle(IWindowAPI& _windowApi);
@@ -13,7 +13,7 @@ namespace ShapeLibrary
 		void setHeight(const int& _height);
 		void setWidth(const int& _width);
 
-		void draw(const Color& _color = Color::WHITE) const;
+		virtual void draw(const Color& _color = Color::WHITE) const override;
 	private:
 		unique_ptr<Point> position = nullptr;
 		int height;

@@ -18,7 +18,7 @@ namespace ShapeLibrary
 		void setLineColor(const Color& _fillColor);
 		Point getPoint(const int& _index);
 		virtual void add(const Point& _point);
-		virtual void draw() {};
+		virtual void draw(const Color& _color = Color::WHITE) const = 0;
 	protected:
 		IWindowAPI * windowApi;
 		vector<Point> points;

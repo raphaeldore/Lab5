@@ -3,13 +3,13 @@
 
 namespace ShapeLibrary
 {
-	class Polygon : public ClosedPolyline
+	class Polygon : virtual public ClosedPolyline
 	{
 	public:
 		Polygon(IWindowAPI& _windowApi);
 		~Polygon();
 
-		void add(const Point& _point) override;
+		virtual void add(const Point& _point) override;
 	private:
 		bool isOnPreviousLine(const Point& _point) const;
 		bool crossesPreviousLines(const Point& _point) const;

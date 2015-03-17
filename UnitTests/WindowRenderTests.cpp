@@ -83,23 +83,23 @@ namespace UnitTests
 		}
 
 
-		//TEST_METHOD(attached_shape_should_be_rendered)
-		//{
-		//	//arrange
-		//	fakeWindowAPI->addEvent(*eventNone);
-		//	fakeWindowAPI->addEvent(*eventQuit);
-		//	Circle * circle = new Circle(*fakeWindowAPI);
-		//	circle->setCenter(Point(100, 100));
-		//	circle->setRadius(20);
+		TEST_METHOD(attached_shape_should_be_rendered)
+		{
+			//arrange
+			fakeWindowAPI->addEvent(*eventNone);
+			fakeWindowAPI->addEvent(*eventQuit);
+			Circle * circle = new Circle(*fakeWindowAPI);
+			circle->setCenter(Point(100, 100));
+			circle->setRadius(20);
 
-		//	windowRender->attach(*circle);
+			windowRender->attach(*circle);
 
-		//	//action 
-		//	windowRender->render();
+			//action 
+			windowRender->render();
 
-		//	//assert
-		//	Assert::IsTrue(fakeWindowAPI->drawCircle_hasBeenCalled());
-		//}
+			//assert
+			Assert::IsTrue(fakeWindowAPI->drawCircle_hasBeenCalled());
+		}
 
 		//TEST_METHOD(putOnTop_a_shape_should_render_it_after_others_shapes)
 		//{

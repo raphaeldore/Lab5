@@ -3,16 +3,17 @@
 
 namespace ShapeLibrary
 {
-	class Circle : public Shape
+	class Circle : virtual public Shape
 	{
 	public:
 		Circle(IWindowAPI &_windowApi);
-		~Circle();
+		~Circle() override;
 
 		void setCenter(Point& _center);
 		void setRadius(const int& _radius);
 
-		void draw(const Color& _color = Color::WHITE) const;
+		virtual void draw(const Color& _color = Color::WHITE) const override;
+		//void draw(const Color& _color) override;
 	private:
 		unsigned int radius;
 	};

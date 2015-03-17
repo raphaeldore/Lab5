@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Polygon::Polygon(IWindowAPI& _windowApi): ClosedPolyline(_windowApi)
+Polygon::Polygon(IWindowAPI& _windowApi) : ClosedPolyline(_windowApi), Shape(_windowApi)
 {
 }
 
@@ -16,7 +16,6 @@ void Polygon::add(const Point& _point)
 	{
 		if (isOnPreviousLine(_point))
 			throw runtime_error("Deux points sur la même ligne!");
-
 		if (crossesPreviousLines(_point))
 			throw runtime_error("Un segment du polygone en croise un autre!");
 	}

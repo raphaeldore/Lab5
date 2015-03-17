@@ -4,12 +4,12 @@
 
 namespace ShapeLibrary
 {
-	class OpenPolyline : public Shape
+	class OpenPolyline : virtual public Shape
 	{
 	public:
-		OpenPolyline(IWindowAPI& _windowApi);
-		~OpenPolyline();
+		explicit OpenPolyline(IWindowAPI& _windowApi);
+		virtual ~OpenPolyline();
 
-		void draw(const Color& _color = Color::WHITE) const;
+		virtual void draw(const Color& _color = Color::WHITE) const override;
 	};
 }
