@@ -60,5 +60,28 @@ namespace UnitTests
 			//Assert
 			Assert::IsTrue(exceptionThrown);
 		}
+
+		TEST_METHOD(getPoint_should_throw_exception_if_index_negative)
+		{
+			//Arrange
+			Shape * closedPolyline = new ClosedPolyline(*fakeWindowAPI);
+
+			//Action
+			bool exceptionThrown = false;
+
+			closedPolyline->add(Point(90, 90));
+
+			try
+			{
+				closedPolyline->getPoint(-1);
+			}
+			catch (invalid_argument ex)
+			{
+				exceptionThrown = true;
+			}
+
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 	};
 }
