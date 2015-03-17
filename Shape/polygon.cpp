@@ -113,10 +113,11 @@ bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoi
 	double resultat2 = (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
 
 	/* 
-	Puisqu'on utilise des doubles, on doit faire attention lorsqu'on fait des comparaisons.
-	Voir les commenaitaires de la méthode areNearlyEqual.
-	*/
+	Puisqu'on utilise des doubles, on doit faire attention lorsqu'on fait
+	des comparaisons.
 
+	Voir les commentaires de la méthode areNearlyEqual.
+	*/
 	return areNearlyEqual(resultat1, resultat2);
 }
 
