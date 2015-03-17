@@ -10,39 +10,39 @@ namespace UnitTests
 	{
 	public:
 
-		//FakeWindowAPI * fakeWindowAPI;
-		//WindowsRender * windowRender;
-		//WindowEvent * eventNone;
-		//WindowEvent * eventQuit;
+		FakeWindowAPI * fakeWindowAPI;
+		WindowsRender * windowRender;
+		WindowEvent * eventNone;
+		WindowEvent * eventQuit;
 	
-		//TEST_METHOD_INITIALIZE(WindowRenderTests_Initialize)
-		//{
-		//	fakeWindowAPI = new FakeWindowAPI(640, 480, "Super beau dessin");
-		//	windowRender = new WindowsRender(*fakeWindowAPI);
+		TEST_METHOD_INITIALIZE(WindowRenderTests_Initialize)
+		{
+			fakeWindowAPI = new FakeWindowAPI(640, 480, "Super beau dessin");
+			windowRender = new WindowsRender(*fakeWindowAPI);
 
-		//	eventNone = new WindowEvent();
-		//	eventQuit = new WindowEvent(WIN_EVENEMENT::QUIT);
-		//}
-		//TEST_METHOD_CLEANUP(WindowRenderTests_CleanUp)
-		//{
-		//	delete fakeWindowAPI;
-		//	delete windowRender;
-		//	// On ne delete pas les évenements. Ils sont effacés dans le render.
-		//	
-		//}
+			eventNone = new WindowEvent();
+			eventQuit = new WindowEvent(WIN_EVENEMENT::QUIT);
+		}
+		TEST_METHOD_CLEANUP(WindowRenderTests_CleanUp)
+		{
+			delete fakeWindowAPI;
+			delete windowRender;
+			// On ne delete pas les évenements. Ils sont effacés dans le render.
+			
+		}
 
-		//TEST_METHOD(render_should_look_for_event_on_windowApi)
-		//{
-		//	//arrange
-		//	fakeWindowAPI->addEvent(*eventQuit);
+		TEST_METHOD(render_should_look_for_event_on_windowApi)
+		{
+			//arrange
+			fakeWindowAPI->addEvent(*eventQuit);
 
-		//	//action 
-		//	windowRender->render();
+			//action 
+			windowRender->render();
 
-		//	//assert
-		//	Assert::IsTrue(fakeWindowAPI->hasEvent_hasBeenCalled());
-		//	Assert::IsTrue(fakeWindowAPI->getEvent_hasBeenCalled());
-		//}
+			//assert
+			Assert::IsTrue(fakeWindowAPI->hasEvent_hasBeenCalled());
+			Assert::IsTrue(fakeWindowAPI->getEvent_hasBeenCalled());
+		}
 
 		//TEST_METHOD(render_should_clear_screen)
 		//{
