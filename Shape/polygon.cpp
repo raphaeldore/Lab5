@@ -55,11 +55,15 @@ bool Polygon::isOnPreviousLine(const Point& _point) const
 	(Donc AC et BC sont parallèles).
 	***************************************************************************/
 
+	/*
+	Rappel définition colinéaire (de Antidote V8):
+		Qui a la même direction et est situé sur la même droite.
+	*/
 	bool pointEstSurDroite = isColineaire(prevPoint, _point, nextPoint);
 
 	/**************************************************************************** 
 	2) Vérifions ensuite si le point se situe sur le même segment.
-	   (car contrairement à une droite, un segment n'est pas infinie.
+	   (car contrairement à une droite, un segment n'est pas infini.
 	   Un segment est délimité par 2 points).
 
 	   Pour faire ça, on vérifie si les les valeurs de x et y se situe entre les
@@ -108,10 +112,12 @@ bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoi
 	double resultat1 = (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y);
 	double resultat2 = (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
 
-	// Puisqu'on utilise des doubles, on doit faire attention lors qu'on fait des comparaisons
-	// Ici j'établie une "marge d'erreur" afin d'établir si un chiffre égale à 0.
-	// Sinon, cette fonction peut ne pas retourner un résultat véridique.
-	return abs(resultat1 - resultat2) <= numeric_limits<double>::epsilon() * abs(resultat1);
+	/* 
+	Puisqu'on utilise des doubles, on doit faire attention lorsqu'on fait des comparaisons.
+	Voir les commenaitaires de la méthode areNearlyEqual.
+	*/
+
+	return areNearlyEqual(resultat1, resultat2);
 }
 
 bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _C, const Point& _D) const
@@ -242,4 +248,20 @@ bool Polygon::isBetween(const double& _a, const double& _b, const double& _c) co
 	// On vérifie de deux manières, afin de gérer les nombres négatifs.
 	// Retourne vrai si _b se situe entre _a et _c
 	return _a <= _b && _b <= _c || _c <= _b && _b <= _a;
+}
+
+bool Polygon::areNearlyEqual(const double& _a, const double& _b) const
+{
+	/*
+	Ici j'établie une "marge d'erreur" afin d'établir si un chiffre égale à 0.
+	Car comparer des doubles n'est pas la même chose qu'avec des entiers.
+	
+	Sinon, cette fonction peut ne pas retourner un résultat véridique (car avec
+	des doubles, des fois 0 != 0).
+
+	Plus d'information ici: http://stackoverflow.com/q/13698927
+	et ici http://realtimecollisiondetection.net/blog/?p=89
+	*/
+
+	return fabs(_a - _b) < numeric_limits<double>::epsilon();
 }

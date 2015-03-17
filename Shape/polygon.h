@@ -16,5 +16,6 @@ namespace ShapeLibrary
 		bool isColineaire(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const;
 		bool intersectsSegment(const Point& _A, const Point& _B, const Point& _C, const Point& _D) const;
 		bool isBetween(const double& _a, const double& _b, const double& _c) const;
+		bool areNearlyEqual(const double& _a, const double& _b) const;
 	};
 }
