@@ -9,7 +9,7 @@ namespace ShapeLibrary
 		Polygon(IWindowAPI& _windowApi);
 		~Polygon();
 
-		void add(Point& _point) override;
+		void add(const Point& _point) override;
 	private:
 		bool isOnPreviousLine(const Point& _point) const;
 		bool crossesPreviousLines(const Point& _point) const;

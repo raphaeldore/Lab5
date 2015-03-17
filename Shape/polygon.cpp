@@ -10,7 +10,7 @@ Polygon::~Polygon()
 {
 }
 
-void Polygon::add(Point& _point)
+void Polygon::add(const Point& _point)
 {
 	if (points.size() >= 2)
 	{
