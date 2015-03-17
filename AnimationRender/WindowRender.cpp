@@ -15,6 +15,7 @@ WindowsRender::~WindowsRender()
 
 void WindowsRender::render() const
 {
+	windowApi->clearScreen();
 	windowApi->hasEvent();
 	windowApi->getEvent();
 }
