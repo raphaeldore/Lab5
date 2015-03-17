@@ -12,6 +12,7 @@ namespace WindowRender
 		WindowsRender(IWindowAPI& _windowApi);
 		~WindowsRender();
 		void render() const;
+		void attach(Shape& _shape);
 	private:
 		IWindowAPI * windowApi;
 		vector<unique_ptr<Shape>> shapes;

@@ -15,6 +15,7 @@ WindowsRender::~WindowsRender()
 
 void WindowsRender::render() const
 {
+	float waitTime = 1000 / 60;
 	do
 	{
 		windowApi->clearScreen();
@@ -23,8 +24,14 @@ void WindowsRender::render() const
 		{
 			shape->draw();
 		}
-
+		
 		windowApi->displayScreen();
-	}
-	while (windowApi->hasEvent() && windowApi->getEvent().getEventType() != QUIT);
+		windowApi->wait(waitTime);
+
+	} while (windowApi->hasEvent() && windowApi->getEvent().getEventType() != QUIT);
+}
+
+void WindowsRender::attach(Shape& _shape)
+{
+	shapes.push_back(make_unique<Shape>(_shape));
 }
