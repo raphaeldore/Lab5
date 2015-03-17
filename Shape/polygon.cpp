@@ -105,8 +105,13 @@ bool Polygon::crossesPreviousLines(const Point& _point) const
 bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoint, const Point& _nextPoint) const
 {
 	// Retourne vrai si les trois points sont sur la même droite
-	return (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y)
-		== (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
+	double resultat1 = (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y);
+	double resultat2 = (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
+
+	// Puisqu'on utilise des doubles, on doit faire attention lors qu'on fait des comparaisons
+	// Ici j'établie une "marge d'erreur" afin d'établir si un chiffre égale à 0.
+	// Sinon, cette fonction peut ne pas retourner un résultat véridique.
+	return abs(resultat1 - resultat2) <= numeric_limits<double>::epsilon() * abs(resultat1);
 }
 
 bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _C, const Point& _D) const
