@@ -92,22 +92,22 @@ namespace UnitTests
 			Assert::IsFalse(exceptionThrown);
 		}
 
-		//TEST_METHOD(draw_Poloygon_should_draw_lines_on_windowAPI)
-		//{
-		//	//Arrange	
-		//	const int NOMBRE_DE_LIGNE_DESSINEES = 4;
+		TEST_METHOD(draw_Poloygon_should_draw_lines_on_windowAPI)
+		{
+			//Arrange	
+			const int NOMBRE_DE_LIGNE_DESSINEES = 4;
 
-		//	polygon->add(Point(100, 100));
-		//	polygon->add(Point(150, 200));
-		//	polygon->add(Point(250, 250));
-		//	polygon->add(Point(175, 175));
+			polygon->add(Point(100, 100));
+			polygon->add(Point(150, 200));
+			polygon->add(Point(250, 250));
+			polygon->add(Point(175, 175));
 
-		//	//Action
-		//	polygon->draw();
+			//Action
+			polygon->draw();
 
-		//	//Assert
-		//	Assert::IsTrue(fakeWindowAPI->setDrawingColor_hasBeenCalled());
-		//	Assert::AreEqual(NOMBRE_DE_LIGNE_DESSINEES, fakeWindowAPI->drawLine_getnumberOfCall());
-		//}
+			//Assert
+			Assert::IsTrue(fakeWindowAPI->setDrawingColor_hasBeenCalled());
+			Assert::AreEqual(NOMBRE_DE_LIGNE_DESSINEES, fakeWindowAPI->drawLine_getnumberOfCall());
+		}
 	};
 }
