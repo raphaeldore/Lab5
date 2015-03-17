@@ -15,7 +15,16 @@ WindowsRender::~WindowsRender()
 
 void WindowsRender::render() const
 {
-	windowApi->clearScreen();
-	windowApi->hasEvent();
-	windowApi->getEvent();
+	do
+	{
+		windowApi->clearScreen();
+
+		for (auto& shape : shapes)
+		{
+			shape->draw();
+		}
+
+		windowApi->displayScreen();
+	}
+	while (windowApi->hasEvent() && windowApi->getEvent().getEventType() != QUIT);
 }

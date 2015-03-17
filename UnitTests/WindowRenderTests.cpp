@@ -57,17 +57,17 @@ namespace UnitTests
 			Assert::IsTrue(fakeWindowAPI->clearScreen_hasBeenCalled());
 		}
 
-		//TEST_METHOD(render_should_display_screen)
-		//{
-		//	//arrange
-		//	fakeWindowAPI->addEvent(*eventQuit);
+		TEST_METHOD(render_should_display_screen)
+		{
+			//arrange
+			fakeWindowAPI->addEvent(*eventQuit);
 
-		//	//action 
-		//	windowRender->render();
+			//action 
+			windowRender->render();
 
-		//	//assert
-		//	Assert::IsTrue(fakeWindowAPI->displayScreen_hasBeenCalled());
-		//}
+			//assert
+			Assert::IsTrue(fakeWindowAPI->displayScreen_hasBeenCalled());
+		}
 
 		//TEST_METHOD(render_should_wait_for_window_regulation)
 		//{
