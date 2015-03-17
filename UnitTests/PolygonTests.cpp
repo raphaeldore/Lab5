@@ -35,6 +35,7 @@ namespace UnitTests
 			try
 			{
 				polygon->add(Point(25, 25));
+				//polygon->add(Point(20, 15));
 			}
 			catch (runtime_error ex)
 			{
@@ -45,28 +46,51 @@ namespace UnitTests
 			Assert::IsTrue(exceptionThrown);
 		}
 		
-		//TEST_METHOD(add_point_to_a_polygon_that_cross_preivous_lines_should_throw_excpetion)
-		//{
-		//	//Arrange
-		//	polygon->add(Point(25, 25));
-		//	polygon->add(Point(25, 75));
-		//	polygon->add(Point(75, 100));
+		TEST_METHOD(add_point_to_a_polygon_that_cross_preivous_lines_should_throw_excpetion)
+		{
+			//Arrange
+			polygon->add(Point(25, 25));
+			polygon->add(Point(25, 75));
+			polygon->add(Point(75, 100));
 
-		//	//Action
-		//	bool exceptionThrown = false;
+			//Action
+			bool exceptionThrown = false;
 
-		//	try
-		//	{
-		//		polygon->add(Point(0, 50));
-		//	}
-		//	catch (runtime_error ex)
-		//	{
-		//		exceptionThrown = true;
-		//	}
+			try
+			{
+				polygon->add(Point(0, 50));
+			}
+			catch (runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
 
-		//	//Assert
-		//	Assert::IsTrue(exceptionThrown);
-		//}
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
+
+		TEST_METHOD(add_point_to_a_polygon_that_does_not_cross_preivous_lines_but_is_close_should_throw_excpetion)
+		{
+			//Arrange
+			polygon->add(Point(25, 25));
+			polygon->add(Point(25, 75));
+			polygon->add(Point(75, 100));
+
+			//Action
+			bool exceptionThrown = false;
+
+			try
+			{
+				polygon->add(Point(30, 60));
+			}
+			catch (runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
+
+			//Assert
+			Assert::IsFalse(exceptionThrown);
+		}
 
 		//TEST_METHOD(draw_Poloygon_should_draw_lines_on_windowAPI)
 		//{
