@@ -18,6 +18,8 @@ void Shape::setLineColor(const Color& _lineColor)
 
 Point Shape::getPoint(const int& _index)
 {
+	if (points.empty()) throw runtime_error("Le vecteur de points est vide!");
+
 	return points.at(_index);
 }
 

@@ -39,5 +39,26 @@ namespace UnitTests
 			Assert::AreEqual(POINT_ATTENDU.y, pointObtenu.y);
 			delete closedPolyline;
 		}
+
+		TEST_METHOD(getPoint_should_throw_exception_if_no_points)
+		{
+			//Arrange
+			Shape * closedPolyline = new ClosedPolyline(*fakeWindowAPI);
+
+			//Action
+			bool exceptionThrown = false;
+
+			try
+			{
+				closedPolyline->getPoint(1);
+			}
+			catch (runtime_error ex)
+			{
+				exceptionThrown = true;
+			}
+
+			//Assert
+			Assert::IsTrue(exceptionThrown);
+		}
 	};
 }
