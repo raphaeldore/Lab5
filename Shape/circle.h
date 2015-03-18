@@ -9,7 +9,7 @@ namespace ShapeLibrary
 		Circle(IWindowAPI &_windowApi);
 		~Circle() override;
 
-		void setCenter(Point& _center);
+		void setCenter(const Point& _center);
 		void setRadius(const int& _radius);
 
 		virtual void draw(const Color& _color = Color::WHITE) const override;

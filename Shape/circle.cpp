@@ -10,7 +10,7 @@ Circle::~Circle()
 {
 }
 
-void Circle::setCenter(Point& _center)
+void Circle::setCenter(const Point& _center)
 {
 	add(_center);
 }

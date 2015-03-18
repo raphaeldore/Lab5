@@ -10,7 +10,7 @@ namespace ShapeLibrary
 		ShapeFactory(IWindowAPI & _windowApi);
 
 		Shape & createOpenPolyLine() const;
-		Shape & createCircle(Point& _center, const int& _radius) const;
+		Shape & createCircle(const Point& _center, const int& _radius) const;
 	private:
 		IWindowAPI * windowApi;
 	};
