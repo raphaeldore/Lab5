@@ -1,4 +1,4 @@
-#include  "stdafx.h"
+ï»¿#include  "stdafx.h"
 #include <algorithm>
 
 using namespace WindowRender;
@@ -39,7 +39,7 @@ void WindowsRender::attach(Shape & _shape)
 
 void WindowsRender::putOnTop(Shape& _shape)
 {
-	// TODO: Algo de recherche plus optimisée
+	// TODO: Algo de recherche plus optimisÃ©e
 
 	int position = 0;
 	for (auto& i : shapes)
@@ -51,14 +51,14 @@ void WindowsRender::putOnTop(Shape& _shape)
 		position++;
 	}
 
-	// Le unique_ptr ne contrôle plus le pointeur. 
-	// On libère au unique_ptr la responsabilité de gérer
+	// Le unique_ptr ne contrÃ´le plus le pointeur. 
+	// On libÃ¨re au unique_ptr la responsabilitÃ© de gÃ©rer
 	// le contenu du pointeur. Le unique_ptr est maintenant
-	// null, mais le contenu pointé (la forme) existe toujours
-	// en mémoire.
+	// null, mais le contenu pointÃ© (la forme) existe toujours
+	// en mÃ©moire.
 	shapes.at(position).release();
 	shapes.erase(shapes.begin() + position);
 
-	// Et on réajoute la forme, cette fois-ci à la fin du vector
+	// Et on rÃ©ajoute la forme, cette fois-ci Ã  la fin du vector
 	shapes.push_back(unique_ptr<Shape>(&_shape));
 }
