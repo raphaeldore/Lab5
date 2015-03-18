@@ -20,3 +20,11 @@ Shape & ShapeFactory::createCircle(const Point& _center, const int& _radius) con
 	return *circle;
 }
 
+Shape & ShapeFactory::createRectangle(const Point& _position, const int& _width, const int& _height)
+{
+	Rectangle * rectangle = new Rectangle(*windowApi);
+	rectangle->setPosition(_position);
+	rectangle->setWidth(_width);
+	rectangle->setHeight(_height);
+	return *rectangle;
+}
