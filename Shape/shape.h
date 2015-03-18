@@ -7,7 +7,6 @@ using namespace std;
 
 namespace ShapeLibrary
 {
-
 	class Shape
 	{
 	public:

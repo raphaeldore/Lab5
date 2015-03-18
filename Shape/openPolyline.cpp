@@ -8,7 +8,6 @@ OpenPolyline::OpenPolyline(IWindowAPI& _windowApi) : Shape(_windowApi)
 
 OpenPolyline::~OpenPolyline()
 {
-
 }
 
 void OpenPolyline::draw() const
@@ -19,6 +18,6 @@ void OpenPolyline::draw() const
 
 	for (auto it = points.begin(); next(it) < points.end(); ++it)
 	{
-		windowApi->drawLine(*it, *next(it));	
+		windowApi->drawLine(*it, *next(it));
 	}
 }

@@ -4,7 +4,6 @@ using namespace ShapeLibrary;
 
 ShapeFactory::ShapeFactory(IWindowAPI &_windowApi) : windowApi(&_windowApi)
 {
-
 }
 
 Shape & ShapeFactory::createOpenPolyLine() const
@@ -29,12 +28,12 @@ Shape & ShapeFactory::createRectangle(const Point& _position, const int& _width,
 	return *rectangle;
 }
 
-Shape& ShapeFactory::createClosedPolyLine() const
+Shape & ShapeFactory::createClosedPolyLine() const
 {
 	return *new ClosedPolyline(*windowApi);
 }
 
-Shape& ShapeFactory::createPolygone() const
+Shape & ShapeFactory::createPolygone() const
 {
 	return *new Polygon(*windowApi);
 }
