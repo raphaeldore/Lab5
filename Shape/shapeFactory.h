@@ -7,6 +7,10 @@ namespace ShapeLibrary
 	{
 	public:
 
-		
+		ShapeFactory(IWindowAPI & _windowApi);
+
+		Shape & createOpenPolyLine() const;
+	private:
+		IWindowAPI * windowApi;
 	};
 }
