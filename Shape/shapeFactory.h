@@ -11,7 +11,7 @@ namespace ShapeLibrary
 
 		Shape & createOpenPolyLine() const;
 		Shape & createCircle(const Point& _center, const int& _radius) const;
-		Shape & createRectangle(const Point& _position, const int& _width, const int& _height);
+		Shape & createRectangle(const Point& _position, const int& _width, const int& _height) const;
 	private:
 		IWindowAPI * windowApi;
 	};
