@@ -75,8 +75,7 @@ bool SDLWindowAPI::hasEvent()
 	{ 
 		if( event.type == SDL_QUIT ) 
 		{ 
-			IWindowEvent * newEvent = new WindowEvent(QUIT);
-			listEvent.push(newEvent);
+			listEvent.push(unique_ptr<IWindowEvent>(new WindowEvent(QUIT)));
 		} 
 	} 
 	
@@ -91,8 +90,7 @@ IWindowEvent & SDLWindowAPI::getEvent()
 {
 	assert(listEvent.empty() != true);
 
-    IWindowEvent * event;
-	event = listEvent.front();
+	IWindowEvent * event = listEvent.front().release();
 	listEvent.pop();
 	return *event;
 }

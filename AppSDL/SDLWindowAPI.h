@@ -42,6 +42,6 @@ namespace SDL_WINDOW_UI
 		SDL_Surface* screen;
 		Uint32 drawingColor; // Couleur pour dessiner
 
-		std::queue<IWindowEvent*> listEvent;
+		std::queue<unique_ptr<IWindowEvent>> listEvent;
 	};
 }

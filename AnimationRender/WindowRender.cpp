@@ -25,7 +25,8 @@ void WindowsRender::render() const
 
 		while (windowApi->hasEvent())
 		{
-			if (windowApi->getEvent().getEventType() == QUIT)
+			unique_ptr<IWindowEvent> event(&windowApi->getEvent());
+			if (event.get()->getEventType() == QUIT)
 			{
 				quit = true;
 			}
