@@ -15,7 +15,7 @@ namespace ShapeLibrary
 		virtual ~Shape() {}
 
 		void setFillColor(const Color& _fillColor);
-		void setLineColor(const Color& _fillColor);
+		void setLineColor(const Color& _lineColor);
 		Point getPoint(const int& _index);
 		virtual void add(const Point& _point);
 		virtual void draw() const = 0;
