@@ -33,22 +33,22 @@ bool Polygon::isOnPreviousLine(const Point& _point) const
 	/****************************************************************************
 	Prenons la droite suivante:
 
-		  /C    où:
-		 /      A = prevPoint
+	      /C    où:
+	     /      A = prevPoint
 	   B/       B = _point
 	   /        C = nextPoint
 	A /
 
 	1) Regardons si le point B se situe sur la droite qui passe par AC
-	
-	D'abords, on regarde si la pente de A à C est la même que celle de B à C :
-		(C.x - A.x)   (C.x - B.x)
-		----------- = -----------
-		(C.y - A.y)   (C.y - B.y)
 
-	Afin d'éviter les nombres décimaux (on ne veut pas de perte de précision), 
+	D'abords, on regarde si la pente de A à C est la même que celle de B à C :
+	    (C.x - A.x)   (C.x - B.x)
+	    ----------- = -----------
+	    (C.y - A.y)   (C.y - B.y)
+
+	Afin d'éviter les nombres décimaux (on ne veut pas de perte de précision),
 	on regarde si le produit des extrêmes est égale au produit des moyens:
-		(C.x - A.x) * (C.y - B.y) = (C.x - B.x) * (C.y - A.y)
+	    (C.x - A.x) * (C.y - B.y) = (C.x - B.x) * (C.y - A.y)
 
 	Si c'est égale, les points A ,B et C sont tous sur la même droite
 	(Donc AC et BC sont parallèles).
@@ -56,17 +56,17 @@ bool Polygon::isOnPreviousLine(const Point& _point) const
 
 	/*
 	Rappel définition colinéaire (de Antidote V8):
-		Qui a la même direction et est situé sur la même droite.
+	Qui a la même direction et est situé sur la même droite.
 	*/
 	bool pointEstSurDroite = isColineaire(prevPoint, _point, nextPoint);
 
-	/**************************************************************************** 
+	/****************************************************************************
 	2) Vérifions ensuite si le point se situe sur le même segment.
-	   (car contrairement à une droite, un segment n'est pas infini.
-	   Un segment est délimité par 2 points).
+	(car contrairement à une droite, un segment n'est pas infini.
+	Un segment est délimité par 2 points).
 
-	   Pour faire ça, on vérifie si les les valeurs de x et y se situe entre les
-	   valeurs de x et y des 2 points qui l'entoure.
+	Pour faire ça, on vérifie si les les valeurs de x et y se situe entre les
+	valeurs de x et y des 2 points qui l'entoure.
 	****************************************************************************/
 
 	bool pointEstSurSegment = false;
@@ -83,9 +83,9 @@ bool Polygon::isOnPreviousLine(const Point& _point) const
 bool Polygon::crossesPreviousLines(const Point& _point) const
 {
 	/*
-	 Le segment CD est le segment à en devenir du polygone si aucun segment se croise.
-	 On va tester ce segment contre tous les autres segments du polygone afin de 
-	 déterminer si il croise au moins un segment de celui-ci;
+	Le segment CD est le segment à en devenir du polygone si aucun segment se croise.
+	On va tester ce segment contre tous les autres segments du polygone afin de
+	déterminer si il croise au moins un segment de celui-ci;
 	*/
 
 	Point C = points.back();
@@ -111,7 +111,7 @@ bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoi
 	double resultat1 = (_nextPoint.x - _previousPoint.x) * (_nextPoint.y - _currentPoint.y);
 	double resultat2 = (_nextPoint.y - _previousPoint.y) * (_nextPoint.x - _currentPoint.x);
 
-	/* 
+	/*
 	Puisqu'on utilise des doubles, on doit faire attention lorsqu'on fait
 	des comparaisons.
 
@@ -123,7 +123,7 @@ bool Polygon::isColineaire(const Point& _previousPoint, const Point& _currentPoi
 bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _C, const Point& _D) const
 {
 	/****************************************************************************
-	
+
 	On a le segment AB, et le segment CD. On veut savoir s'ils se croisent.
 
 	Comment?
@@ -135,13 +135,13 @@ bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _
 	vide...).
 
 	-----
-	
+
 	On a 4 matrices de points:
 
-	1)				2)				3)				4)
-	Ax Ay | 1		Ax Ay | 1		Ax Ay | 1		Bx By | 1
-	Bx By | 1		Bx By | 1		Cx Cy | 1		Cx By | 1
-	Cx Cy | 1		Dx Dy | 1		Dx Dy | 1		Dx Dy | 1
+	1)               2)               3)               4)
+	Ax Ay | 1        Ax Ay | 1        Ax Ay | 1        Bx By | 1
+	Bx By | 1        Bx By | 1        Cx Cy | 1        Cx By | 1
+	Cx Cy | 1        Dx Dy | 1        Dx Dy | 1        Dx Dy | 1
 
 	(On est techniquement en 3 dimensions, on ajoute une rangée de '1'
 	afin qu'on puisse faire les calculs qui vont suivre. Ça donne un volume,
@@ -151,58 +151,58 @@ bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _
 	Il y a 4 matrices, car je compare chaque point d'un segment avec
 	les deux points d'un autre segment, soit:
 	    - Le point C avec le segment AB
-		- Le point D avec le segment AB
-		- Le point A avec le segment CD
-		- Le point B avec le segment CD
+	    - Le point D avec le segment AB
+	    - Le point A avec le segment CD
+	    - Le point B avec le segment CD
 
 	On calcule ensuite le déterminant de chaque matrice :
 
-		  Det1                  Det2
+	      Det1                  Det2
 	1)    | Ax-Cx  Bx-Cx |      | Ax-Dx  Bx-Dx |
-		  | Ay-Cy  By-Cy |  vs  | Ay-Dy  By-Dy |
+	      | Ay-Cy  By-Cy |  vs  | Ay-Dy  By-Dy |
 
-		  Det3                  Det4
+	      Det3                  Det4
 	2)    | Cx-Ax  Dx-Ax |      | Cx-Bx  Dx-Bx |
-		  | Cy-Ay  Dy-Ay |  vs  | Cy-By  Dy-By |
-		  
+	      | Cy-Ay  Dy-Ay |  vs  | Cy-By  Dy-By |
+
 	Pourquoi? On veut déterminer si un point est à gauche ou à droite
 	d'un segment. Pour ça il faut savoir son orientation face au segment/vecteur
 	en question (est-il à gauche ou à droite du segment ou sur le segment).
 	Le signe du déterminant détermine l'orientation du volume résultant.
-	
+
 	On comprend mieux avec un schéma :
-	
-		   C
-		   |
-		   |
+
+	       C
+	       |
+	       |
 	A--------------B
-		   |
-		   |
-		   D
+	       |
+	       |
+	       D
 
 	Je regarde si le point A se situe à gauche ou à droite du point C et D.
-	Je regarde ensuite si le point B se situe à gauche ou à droite du point 
+	Je regarde ensuite si le point B se situe à gauche ou à droite du point
 	C et D.
 
-	-  Si un point est à gauche d'un segment, le déterminant de la matrice sera > 0
-	-  Si un point est à droite d'un segment, le déterminant de la matrice sera < 0
-	-  Si un point est sur le segment, le déterminant de la matrice sera 0 ***
-	   
-	   *** Je ne vérifie pas cette condition dans cette fonction. Je m'en occupe déjà avec
-	   ma fonction isColineaire (qui est appelée avant intersectsSegment avant l'ajout
-	   d'un point au polygone, et qui vérifie justement que le point ajouté ne se situe pas
-	   sur la ligne précédente. Elle est aussi moins couteuse.).
+	- Si un point est à gauche d'un segment, le déterminant de la matrice sera > 0
+	- Si un point est à droite d'un segment, le déterminant de la matrice sera < 0
+	- Si un point est sur le segment, le déterminant de la matrice sera 0 ***
+
+	    *** Je ne vérifie pas cette condition dans cette fonction. Je m'en occupe déjà avec
+	    ma fonction isColineaire (qui est appelée avant intersectsSegment avant l'ajout
+	    d'un point au polygone, et qui vérifie justement que le point ajouté ne se situe pas
+	    sur la ligne précédente. Elle est aussi moins couteuse.).
 
 	Pour que le segment CD croise le segment AB, un des 4 scénarios suivants
 	doit être vrai:
-		1) A est gauche du point C, et B est à droite du point C.
-		    -> ( det1  et -det2 )  et ( det3  et -det4 ) 
-		2) A est à droite du point C, et B est gauche du point C.
-		    -> (-det1  et  det2 )  et ( det3  et -det4 )
-		3) B est à gauche du point D, et A est à droite du point D.
-		    -> ( det3  et -det4 )  et ( det1  et -det2 )
-		4) B est à droite du point D, et A est à gauche du point D.
-		    ->  (-det3  et  det4 ) et ( det1  et -det2 )
+	    1) A est gauche du point C, et B est à droite du point C.
+	        -> ( det1  et -det2 )  et ( det3  et -det4 )
+	    2) A est à droite du point C, et B est gauche du point C.
+	        -> (-det1  et  det2 )  et ( det3  et -det4 )
+	    3) B est à gauche du point D, et A est à droite du point D.
+	        -> ( det3  et -det4 )  et ( det1  et -det2 )
+	    4) B est à droite du point D, et A est à gauche du point D.
+	        ->  (-det3  et  det4 ) et ( det1  et -det2 )
 
 	Si aucun scénario correspond au résultat, la droite CD ne croise pas
 	la droite AB.
@@ -255,7 +255,7 @@ bool Polygon::areNearlyEqual(const double& _a, const double& _b) const
 	/*
 	Ici j'établie une "marge d'erreur" afin d'établir si un chiffre égale à 0.
 	Car comparer des doubles n'est pas la même chose qu'avec des entiers.
-	
+
 	Sinon, cette fonction peut ne pas retourner un résultat véridique (car avec
 	des doubles, des fois 0 != 0).
 
