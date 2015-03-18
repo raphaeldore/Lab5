@@ -17,9 +17,19 @@ WindowsRender::~WindowsRender()
 void WindowsRender::render() const
 {
 	float waitTime = 1000 / 60;
-	do
+	bool quit = false;
+
+	while (quit == false)
 	{
 		windowApi->clearScreen();
+
+		while (windowApi->hasEvent())
+		{
+			if (windowApi->getEvent().getEventType() == QUIT)
+			{
+				quit = true;
+			}
+		}
 
 		for (auto& shape : shapes)
 		{
@@ -28,8 +38,8 @@ void WindowsRender::render() const
 
 		windowApi->displayScreen();
 		windowApi->wait(waitTime);
+	}
 
-	} while (windowApi->hasEvent() && windowApi->getEvent().getEventType() != QUIT);
 }
 
 void WindowsRender::attach(Shape & _shape)
