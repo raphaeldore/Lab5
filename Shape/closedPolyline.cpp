@@ -12,7 +12,7 @@ ClosedPolyline::~ClosedPolyline()
 
 void ClosedPolyline::draw() const
 {
-	if (points.size() < 3) throw runtime_error("Nombre de points insufisants. Minimum 3 points.");
+	if (points.size() < 3) throw runtime_error("Pas assez de points pour dessiner un polygone (3 min. Ex: Triangle).");
 
 	OpenPolyline::draw();
 
