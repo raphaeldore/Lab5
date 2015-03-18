@@ -33,16 +33,16 @@ namespace UnitTests
 			Assert::IsTrue(dynamic_cast<OpenPolyline*>(&openPolyLine));
 		}
 
-		//TEST_METHOD(should_create_a_circle)
-		//{
-		//	//Arrange
+		TEST_METHOD(should_create_a_circle)
+		{
+			//Arrange
 
-		//	//Action
-		//	Shape & circle = shapeFactory->createCircle(Point(300, 300), 30);
+			//Action
+			Shape & circle = shapeFactory->createCircle(Point(300, 300), 30);
 
-		//	//Assert
-		//	Assert::IsTrue(dynamic_cast<Circle*>(&circle));
-		//}
+			//Assert
+			Assert::IsTrue(dynamic_cast<Circle*>(&circle));
+		}
 
 		//TEST_METHOD(should_create_a_rectangle)
 		//{

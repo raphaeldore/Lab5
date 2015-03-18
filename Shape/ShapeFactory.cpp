@@ -11,3 +11,11 @@ Shape & ShapeFactory::createOpenPolyLine() const
 {
 	return *new OpenPolyline(*windowApi);
 }
+
+Shape & ShapeFactory::createCircle(Point& _center, const int& _radius) const
+{
+	Circle * circle = new Circle(*windowApi);
+	circle->setCenter(_center);
+	circle->setRadius(_radius);
+	return *circle;
+}
