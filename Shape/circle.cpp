@@ -27,6 +27,7 @@ void Circle::draw() const
 
 	if (fillColor.isVisible())
 	{
+		windowApi->setDrawingColor(fillColor);
 		windowApi->fillCircle(points.back(), radius);
 	}
 

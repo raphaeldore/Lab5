@@ -33,6 +33,7 @@ void Rectangle::draw() const
 
 	if (fillColor.isVisible())
 	{
+		windowApi->setDrawingColor(fillColor);
 		windowApi->fillRectangle(points.back(), width, height);
 	}
 
