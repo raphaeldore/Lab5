@@ -12,7 +12,7 @@ Rectangle::~Rectangle()
 
 void Rectangle::setPosition(const Point& _position)
 {
-	position = make_unique<Point>(_position);
+	add(_position);
 }
 
 void Rectangle::setHeight(const int& _height)
@@ -29,13 +29,13 @@ void Rectangle::setWidth(const int& _width)
 
 void Rectangle::draw() const
 {
-	if (position == nullptr) throw runtime_error("Aucune position n'a été configurée!");
+	if (points.size() == 0) throw runtime_error("Aucune position n'a été configurée!");
 
 	if (fillColor.isVisible())
 	{
-		windowApi->fillRectangle(*position, width, height);
+		windowApi->fillRectangle(points.back(), width, height);
 	}
 
 	windowApi->setDrawingColor(lineColor);
-	windowApi->drawRectangle(*position, width, height);
+	windowApi->drawRectangle(points.back(), width, height);
 }

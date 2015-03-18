@@ -15,7 +15,6 @@ namespace ShapeLibrary
 
 		virtual void draw() const override;
 	private:
-		unique_ptr<Point> position = nullptr;
 		int height;
 		int width;
 	};
