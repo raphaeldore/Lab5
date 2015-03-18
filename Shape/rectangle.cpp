@@ -30,11 +30,12 @@ void Rectangle::setWidth(const int& _width)
 void Rectangle::draw() const
 {
 	if (position == nullptr) throw runtime_error("Aucune position n'a été configurée!");
-	windowApi->setDrawingColor(lineColor);
-	windowApi->drawRectangle(*position, width, height);
 
 	if (fillColor.isVisible())
 	{
 		windowApi->fillRectangle(*position, width, height);
 	}
+
+	windowApi->setDrawingColor(lineColor);
+	windowApi->drawRectangle(*position, width, height);
 }
