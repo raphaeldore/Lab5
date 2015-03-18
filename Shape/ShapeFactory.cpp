@@ -33,3 +33,8 @@ Shape& ShapeFactory::createClosedPolyLine() const
 {
 	return *new ClosedPolyline(*windowApi);
 }
+
+Shape& ShapeFactory::createPolygone() const
+{
+	return *new Polygon(*windowApi);
+}
