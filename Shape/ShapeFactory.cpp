@@ -28,3 +28,8 @@ Shape & ShapeFactory::createRectangle(const Point& _position, const int& _width,
 	rectangle->setHeight(_height);
 	return *rectangle;
 }
+
+Shape& ShapeFactory::createClosedPolyLine() const
+{
+	return *new ClosedPolyline(*windowApi);
+}

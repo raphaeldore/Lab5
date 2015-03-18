@@ -55,16 +55,16 @@ namespace UnitTests
 			Assert::IsTrue(dynamic_cast<Rectangle*>(&rectangle));
 		}
 
-		//TEST_METHOD(should_create_a_ClosedPolyLine)
-		//{
-		//	//Arrange
+		TEST_METHOD(should_create_a_ClosedPolyLine)
+		{
+			//Arrange
 
-		//	//Action
-		//	Shape & clodePolyLine = shapeFactory->createClosedPolyLine();
+			//Action
+			Shape & clodePolyLine = shapeFactory->createClosedPolyLine();
 
-		//	//Assert
-		//	Assert::IsTrue(dynamic_cast<ClosedPolyline*>(&clodePolyLine));
-		//}
+			//Assert
+			Assert::IsTrue(dynamic_cast<ClosedPolyline*>(&clodePolyLine));
+		}
 
 		//TEST_METHOD(should_create_a_Polygon)
 		//{
