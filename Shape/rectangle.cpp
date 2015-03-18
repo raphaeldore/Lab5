@@ -27,10 +27,10 @@ void Rectangle::setWidth(const int& _width)
 	width = _width;
 }
 
-void Rectangle::draw(const Color& _color) const
+void Rectangle::draw() const
 {
 	if (position == nullptr) throw runtime_error("Aucune position n'a été configurée!");
-	windowApi->setDrawingColor(_color);
+	windowApi->setDrawingColor(lineColor);
 	windowApi->drawRectangle(*position, width, height);
 
 	if (fillColor.isVisible())

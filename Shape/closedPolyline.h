@@ -9,6 +9,6 @@ namespace ShapeLibrary
 		ClosedPolyline(IWindowAPI& _windowApi);
 		virtual ~ClosedPolyline();
 
-		virtual void draw(const Color& _color = Color::WHITE) const override;
+		virtual void draw() const override;
 	};
 }

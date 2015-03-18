@@ -13,7 +13,7 @@ namespace ShapeLibrary
 		void setHeight(const int& _height);
 		void setWidth(const int& _width);
 
-		virtual void draw(const Color& _color = Color::WHITE) const override;
+		virtual void draw() const override;
 	private:
 		unique_ptr<Point> position = nullptr;
 		int height;

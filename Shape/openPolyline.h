@@ -10,6 +10,6 @@ namespace ShapeLibrary
 		explicit OpenPolyline(IWindowAPI& _windowApi);
 		virtual ~OpenPolyline();
 
-		virtual void draw(const Color& _color = Color::WHITE) const override;
+		virtual void draw() const override;
 	};
 }
