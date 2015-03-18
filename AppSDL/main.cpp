@@ -15,8 +15,8 @@ int main( int argc, char* args[] )
 
 	try
 	{
-		IWindowAPI * windowAPI = new SDLWindowAPI(640,480,"Afficher des formes");
-		WindowsRender * windowRender = new WindowsRender(*windowAPI); 
+		unique_ptr<IWindowAPI> windowAPI(new SDLWindowAPI(640, 480, "Afficher des formes"));
+		unique_ptr<WindowsRender> windowRender(new WindowsRender(*windowAPI));
 
 		ShapeFactory shapeFactory(*windowAPI); 
 
@@ -30,10 +30,16 @@ int main( int argc, char* args[] )
 		windowRender->attach(openPolyLine);  
 
 		// On ajoute un cercle
-		Shape & circle  = shapeFactory.createCircle(Point(300,300),30);
-		circle.setLineColor(Color::CYAN);
-		circle.setFillColor(Color::BROWN);
-		windowRender->attach(circle);         
+		Shape & circle1 = shapeFactory.createCircle(Point(300, 300), 15);
+		circle1.setLineColor(Color::BLUE);
+		circle1.setFillColor(Color::RED);
+		windowRender->attach(circle1);
+
+		// On ajoute un cercle
+		Shape & circle2  = shapeFactory.createCircle(Point(300,300),30);
+		circle2.setLineColor(Color::CYAN);
+		circle2.setFillColor(Color::BROWN);
+		windowRender->attach(circle2);         
 
 		// On ajoute un rectangle
 		Shape & rectangle = shapeFactory.createRectangle(Point(280,50),100,50);
@@ -57,12 +63,11 @@ int main( int argc, char* args[] )
 		poly.add(Point(250,350));
 		poly.add(Point(175,175));
 		windowRender->attach(poly);
+
+		windowRender->putOnTop(circle1);
 	
 		// On fait le rendu de tout ça
 		windowRender->render();       // Donne le contrôle à Window
-
-		delete windowRender;
-		delete windowAPI;
 
 	}
 	catch (exception & e)
