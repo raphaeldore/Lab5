@@ -2,7 +2,7 @@
 
 namespace ShapeLibrary
 {
-	enum WIN_EVENEMENT{ NONE, QUIT };
+	enum WIN_EVENEMENT{ NONE, QUIT, RESIZE, KEYDOWN};
 
 	class IWindowEvent
 	{

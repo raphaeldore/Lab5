@@ -30,6 +30,8 @@ namespace ShapeLibrary
 		virtual void displayScreen() = 0;
 
 		virtual void wait(float _timeMillis) = 0;
+
+		virtual void toggleFullscreen() = 0;
 	};
 
 }

@@ -11,8 +11,16 @@ SDLWindowAPI::SDLWindowAPI(const int _width, const int _height, const string & _
 {
 	assert(_height > 0 && _width > 0);
 	SDL_Init( SDL_INIT_EVERYTHING ); 
-	screen = SDL_SetVideoMode( _width, _height, 32, SDL_HWSURFACE);
+	screen = SDL_SetVideoMode( _width, _height, 32, SDL_HWSURFACE | SDL_RESIZABLE);
+	if (screen != nullptr)
+	{
+		windowOK = true;
+	}
 	SDL_WM_SetCaption(_windowTitle.c_str(), 0 ); 
+
+	screenWidth = _width;
+	screenHeight = _height;
+	windowed = true;
 }
 
 SDLWindowAPI::~SDLWindowAPI()
@@ -67,16 +75,53 @@ void SDLWindowAPI::wait(float _timeMillis)
 	SDL_Delay((Uint32)_timeMillis);
 }
 
+void SDLWindowAPI::toggleFullscreen()
+{
+	if (windowed == true)
+	{
+		screen = SDL_SetVideoMode(screenWidth, screenHeight, 32, SDL_HWSURFACE | SDL_RESIZABLE | SDL_FULLSCREEN);
+		if (screen == nullptr)
+		{
+			windowOK = false;
+			return;
+		}
+
+		windowed = false;
+	} else if (windowed == false)
+	{
+		screen = SDL_SetVideoMode(screenWidth, screenHeight, 32, SDL_HWSURFACE | SDL_RESIZABLE);
+		if (screen == nullptr)
+		{
+			windowOK = false;
+			return;
+		}
+
+		windowed = true;
+	}
+	
+}
+
+void SDLWindowAPI::handleEvents()
+{
+
+}
+
 bool SDLWindowAPI::hasEvent()
 {
-	SDL_Event event; 
-	
 	while( SDL_PollEvent( &event ) ) 
 	{ 
 		if( event.type == SDL_QUIT ) 
 		{ 
 			listEvent.push(unique_ptr<IWindowEvent>(new WindowEvent(QUIT)));
-		} 
+		} else if (event.type == SDL_VIDEORESIZE)
+		{
+			listEvent.push(unique_ptr<IWindowEvent>(new WindowEvent(RESIZE)));
+			//screen = SDL_SetVideoMode(event.resize.w, event.resize.h, 32, SDL_SWSURFACE | SDL_RESIZABLE);
+		} else if (event.type == SDL_KEYDOWN)
+		{
+			listEvent.push(unique_ptr<IWindowEvent>(new WindowEvent(KEYDOWN)));
+			//toggleFullscreen();
+		}
 	} 
 	
 	if (listEvent.empty())

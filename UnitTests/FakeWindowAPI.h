@@ -33,6 +33,8 @@ namespace UnitTests
 
 		void wait(float _timeMillis);
 
+		void toggleFullscreen();
+
 		// Méthodes pour le FAKE
 		int drawLine_getnumberOfCall();
 		bool drawCircle_hasBeenCalled();

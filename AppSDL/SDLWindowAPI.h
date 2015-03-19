@@ -36,12 +36,17 @@ namespace SDL_WINDOW_UI
 		void displayScreen();
 
 		void wait(float _timeMillis);
+		void toggleFullscreen();
+		void handleEvents();
 
 	private:
-
+		int screenWidth;
+		int screenHeight;
+		bool windowOK;
+		bool windowed;
 		SDL_Surface* screen;
 		Uint32 drawingColor; // Couleur pour dessiner
-
-		std::queue<unique_ptr<IWindowEvent>> listEvent;
+		SDL_Event event;
+		queue<unique_ptr<IWindowEvent>> listEvent;
 	};
 }

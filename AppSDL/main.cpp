@@ -15,7 +15,7 @@ int main( int argc, char* args[] )
 
 	try
 	{
-		unique_ptr<IWindowAPI> windowAPI(new SDLWindowAPI(640, 480, "Afficher des formes"));
+		unique_ptr<IWindowAPI> windowAPI(new SDLWindowAPI(1600, 900, "Afficher des formes"));
 		unique_ptr<WindowsRender> windowRender(new WindowsRender(*windowAPI));
 
 		ShapeFactory shapeFactory(*windowAPI); 

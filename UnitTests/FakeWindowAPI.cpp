@@ -92,6 +92,10 @@ void FakeWindowAPI::drawLine(const Point& _point1, const Point& _point2)
 	hasWaitHasBeenCalled = true;
 }
 
+void FakeWindowAPI::toggleFullscreen()
+{
+}
+
 int FakeWindowAPI::drawLine_getnumberOfCall()
 {
 	return numberOfCallToDrawLine;

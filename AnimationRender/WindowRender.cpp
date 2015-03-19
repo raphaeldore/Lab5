@@ -1,5 +1,4 @@
 ﻿#include  "stdafx.h"
-#include <algorithm>
 
 using namespace WindowRender;
 using namespace ShapeLibrary;
@@ -29,12 +28,16 @@ void WindowsRender::render() const
 			if (event.get()->getEventType() == QUIT)
 			{
 				quit = true;
+			} else if (event.get()->getEventType() == KEYDOWN)
+			{
+				//windowApi->resize();
+				windowApi->toggleFullscreen();
 			}
 		}
 
 		for (auto& shape : shapes)
 		{
-			shape.get()->movePoints(0.05, 0.1);
+			shape.get()->movePoints(0.05, 0.1); // TODO: TEMP
 			shape.get()->draw();
 		}
 

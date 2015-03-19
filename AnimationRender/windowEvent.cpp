@@ -10,7 +10,7 @@ WindowEvent::WindowEvent()
 
 WindowEvent::WindowEvent( const WIN_EVENEMENT & _eventType )
 {
-	eventType = QUIT;
+	eventType = _eventType;
 }
 
 WIN_EVENEMENT WindowEvent::getEventType() const
