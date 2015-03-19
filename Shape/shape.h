@@ -16,6 +16,7 @@ namespace ShapeLibrary
 		void setFillColor(const Color& _fillColor);
 		void setLineColor(const Color& _lineColor);
 		Point getPoint(const int& _index);
+		void movePoints(const double& _x, const double& _y);
 		virtual void add(const Point& _point);
 		virtual void draw() const = 0;
 	protected:

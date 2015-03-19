@@ -34,6 +34,7 @@ void WindowsRender::render() const
 
 		for (auto& shape : shapes)
 		{
+			shape.get()->movePoints(0.05, 0.1);
 			shape.get()->draw();
 		}
 

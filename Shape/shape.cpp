@@ -24,6 +24,15 @@ Point Shape::getPoint(const int& _index)
 	return points.at(_index);
 }
 
+void Shape::movePoints(const double& _x, const double& _y)
+{
+	for (auto& i : points)
+	{
+		i.x += _x;
+		i.y += _y;
+	}
+}
+
 void Shape::add(const Point& _point)
 {
 	points.push_back(_point);
