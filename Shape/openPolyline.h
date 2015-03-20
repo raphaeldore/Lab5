@@ -4,7 +4,7 @@
 
 namespace ShapeLibrary
 {
-	class OpenPolyline : virtual public Shape
+	class OpenPolyline : public Shape
 	{
 	public:
 		explicit OpenPolyline(IWindowAPI& _windowApi);

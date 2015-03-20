@@ -2,7 +2,7 @@
 
 using namespace ShapeLibrary;
 
-Polygon::Polygon(IWindowAPI& _windowApi) : ClosedPolyline(_windowApi), Shape(_windowApi)
+Polygon::Polygon(IWindowAPI& _windowApi) : ClosedPolyline(_windowApi)
 {
 }
 
