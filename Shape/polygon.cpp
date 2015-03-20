@@ -56,7 +56,7 @@ bool Polygon::isOnPreviousLine(const Point& _point) const
 
 	/*
 	Rappel définition colinéaire (de Antidote V8):
-	Qui a la même direction et est situé sur la même droite.
+	    Qui a la même direction et est situé sur la même droite.
 	*/
 	bool pointEstSurDroite = isColineaire(prevPoint, _point, nextPoint);
 
