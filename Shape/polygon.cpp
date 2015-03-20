@@ -202,7 +202,7 @@ bool Polygon::intersectsSegment(const Point& _A, const Point& _B, const Point& _
 	    3) B est à gauche du point D, et A est à droite du point D.
 	        -> ( det3  et -det4 )  et ( det1  et -det2 )
 	    4) B est à droite du point D, et A est à gauche du point D.
-	        -> (-det3  et  det4 ) et ( det1  et -det2 )
+	        -> (-det3  et  det4 ) et  ( det1  et -det2 )
 
 	Si aucun scénario correspond au résultat, la droite CD ne croise pas
 	la droite AB.
