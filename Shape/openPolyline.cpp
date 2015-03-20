@@ -12,11 +12,11 @@ OpenPolyline::~OpenPolyline()
 
 void OpenPolyline::draw() const
 {
-	if (points.size() < 2) throw runtime_error("Pas assez de points pour dessiner une ligne!");
+	if (getPoints().size() < 2) throw runtime_error("Pas assez de points pour dessiner une ligne!");
 
-	windowApi->setDrawingColor(lineColor);
+	windowApi->setDrawingColor(getLineColor());
 
-	for (auto it = points.begin(); next(it) < points.end(); ++it)
+	for (auto it = getPoints().begin(); next(it) < getPoints().end(); ++it)
 	{
 		windowApi->drawLine(*it, *next(it));
 	}

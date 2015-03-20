@@ -12,7 +12,7 @@ Polygon::~Polygon()
 
 void Polygon::add(const Point& _point)
 {
-	if (points.size() >= 2)
+	if (getPoints().size() >= 2)
 	{
 		if (isOnPreviousLine(_point))
 			throw runtime_error("Deux points sur la même ligne!");
@@ -25,10 +25,10 @@ void Polygon::add(const Point& _point)
 
 bool Polygon::isOnPreviousLine(const Point& _point) const
 {
-	if (points.size() < 2) throw runtime_error("Ligne précédente inexistante");
+	if (getPoints().size() < 2) throw runtime_error("Ligne précédente inexistante");
 
-	Point prevPoint = points.at(points.size() - 2);
-	Point nextPoint = points.back();
+	Point prevPoint = getPoints().at(getPoints().size() - 2);
+	Point nextPoint = getPoints().back();
 
 	/****************************************************************************
 	Prenons la droite suivante:
@@ -88,10 +88,10 @@ bool Polygon::crossesPreviousLines(const Point& _point) const
 	déterminer si il croise au moins un segment de celui-ci;
 	*/
 
-	Point C = points.back();
+	Point C = getPoints().back();
 	Point D = _point;
 
-	for (auto it = points.begin(); next(it) < points.end(); ++it)
+	for (auto it = getPoints().begin(); next(it) < getPoints().end(); ++it)
 	{
 		// On regarde si le segment CD croise un des segments AB du polygone.
 		Point A = *it;
@@ -100,7 +100,6 @@ bool Polygon::crossesPreviousLines(const Point& _point) const
 		if (intersectsSegment(A, B, C, D))
 			return true;
 	}
-
 
 	return false;
 }

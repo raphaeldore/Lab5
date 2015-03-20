@@ -23,14 +23,14 @@ void Circle::setRadius(const int& _radius)
 
 void Circle::draw() const
 {
-	if (points.size() == 0) throw runtime_error("Aucun centre n'a été configuré");
+	if (getPoints().size() == 0) throw runtime_error("Aucun centre n'a été configuré");
 
-	if (fillColor.isVisible())
+	if (getFillColor().isVisible())
 	{
-		windowApi->setDrawingColor(fillColor);
-		windowApi->fillCircle(points.back(), radius);
+		windowApi->setDrawingColor(getFillColor());
+		windowApi->fillCircle(getPoints().back(), radius);
 	}
 
-	windowApi->setDrawingColor(lineColor);
-	windowApi->drawCircle(points.back(), radius);
+	windowApi->setDrawingColor(getLineColor());
+	windowApi->drawCircle(getPoints().back(), radius);
 }

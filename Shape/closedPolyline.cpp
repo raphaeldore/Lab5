@@ -12,10 +12,10 @@ ClosedPolyline::~ClosedPolyline()
 
 void ClosedPolyline::draw() const
 {
-	if (points.size() < 3) throw runtime_error("Pas assez de points pour dessiner un polygone (3 min. Ex: Triangle).");
+	if (getPoints().size() < 3) throw runtime_error("Pas assez de points pour dessiner un polygone (3 min. Ex: Triangle).");
 
 	OpenPolyline::draw();
 
 	// Il ne reste qu'à fermer le polygone
-	windowApi->drawLine(points.back(), points.front());
+	windowApi->drawLine(getPoints().back(), getPoints().front());
 }

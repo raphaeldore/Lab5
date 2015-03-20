@@ -29,14 +29,14 @@ void Rectangle::setWidth(const int& _width)
 
 void Rectangle::draw() const
 {
-	if (points.size() == 0) throw runtime_error("Aucune position n'a été configurée!");
+	if (getPoints().size() == 0) throw runtime_error("Aucune position n'a été configurée!");
 
-	if (fillColor.isVisible())
+	if (getFillColor().isVisible())
 	{
-		windowApi->setDrawingColor(fillColor);
-		windowApi->fillRectangle(points.back(), width, height);
+		windowApi->setDrawingColor(getFillColor());
+		windowApi->fillRectangle(getPoints().back(), width, height);
 	}
 
-	windowApi->setDrawingColor(lineColor);
-	windowApi->drawRectangle(points.back(), width, height);
+	windowApi->setDrawingColor(getLineColor());
+	windowApi->drawRectangle(getPoints().back(), width, height);
 }
