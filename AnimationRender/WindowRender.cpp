@@ -25,6 +25,7 @@ void WindowsRender::render() const
 
 		while (windowApi->hasEvent())
 		{
+			// Nécessaire pour éviter un memory leak
 			unique_ptr<IWindowEvent> event(&windowApi->getEvent());
 			if (event.get()->getEventType() == QUIT)
 			{
