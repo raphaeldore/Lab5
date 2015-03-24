@@ -16,8 +16,11 @@ void OpenPolyline::draw() const
 
 	windowApi->setDrawingColor(getLineColor());
 
-	for (auto it = getPoints().begin(); next(it) < getPoints().end(); ++it)
+	if (getLineColor().isVisible())
 	{
-		windowApi->drawLine(*it, *next(it));
+		for (auto it = getPoints().begin(); next(it) < getPoints().end(); ++it)
+		{
+			windowApi->drawLine(*it, *next(it));
+		}
 	}
 }

@@ -4,6 +4,8 @@ using namespace ShapeLibrary;
 
 Rectangle::Rectangle(IWindowAPI& _windowApi) : Shape(_windowApi)
 {
+	width = 0;
+	height = 0;
 }
 
 Rectangle::~Rectangle()
@@ -37,6 +39,9 @@ void Rectangle::draw() const
 		windowApi->fillRectangle(getPoints().back(), width, height);
 	}
 
-	windowApi->setDrawingColor(getLineColor());
-	windowApi->drawRectangle(getPoints().back(), width, height);
+	if (getLineColor().isVisible())
+	{
+		windowApi->setDrawingColor(getLineColor());
+		windowApi->drawRectangle(getPoints().back(), width, height);
+	}
 }

@@ -4,6 +4,7 @@ using namespace ShapeLibrary;
 
 Circle::Circle(IWindowAPI& _windowApi) : Shape(_windowApi)
 {
+	radius = 0;
 }
 
 Circle::~Circle()
@@ -17,7 +18,7 @@ void Circle::setCenter(const Point& _center)
 
 void Circle::setRadius(const int& _radius)
 {
-	if (_radius < 0) throw invalid_argument("Radius négatif non permis");
+	if (_radius <= 0) throw invalid_argument("Rayon de 0 ou moins non valide.");
 	radius = _radius;
 }
 
@@ -31,6 +32,9 @@ void Circle::draw() const
 		windowApi->fillCircle(getPoints().back(), radius);
 	}
 
-	windowApi->setDrawingColor(getLineColor());
-	windowApi->drawCircle(getPoints().back(), radius);
+	if (getLineColor().isVisible())
+	{
+		windowApi->setDrawingColor(getLineColor());
+		windowApi->drawCircle(getPoints().back(), radius);
+	}
 }

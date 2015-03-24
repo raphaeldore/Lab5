@@ -21,8 +21,6 @@ void WindowsRender::render() const
 
 	while (quit == false)
 	{
-		windowApi->clearScreen();
-
 		while (windowApi->hasEvent())
 		{
 			// Nécessaire pour éviter un memory leak
@@ -32,6 +30,8 @@ void WindowsRender::render() const
 				quit = true;
 			}
 		}
+
+		windowApi->clearScreen();
 
 		for (auto& shape : shapes)
 		{
